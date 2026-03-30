@@ -1,0 +1,200 @@
+:root {
+  --blue: #1E88E5;
+  --white: #FFFFFF;
+  --yellow: #FFC107;
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  min-height: 100vh;
+  color: #333;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background: var(--blue);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 80px;
+  margin-right: 15px;
+  border-radius: 8px;
+}
+
+.logo h1 {
+  color: var(--white);
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+  color: var(--yellow);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: var(--yellow);
+  left: 0;
+  bottom: -3px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* MAIN CONTENT */
+.main-content {
+  flex: 1;
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-page h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--blue);
+  margin-bottom: 40px;
+}
+
+/* CONTACT GRID */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.contact-info h2 {
+  font-size: 1.5rem;
+  color: var(--blue);
+  margin-bottom: 15px;
+}
+
+.contact-info p {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.map-container {
+    flex: 1;
+    display: flex;
+}
+
+/* MAP */
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* FOOTER */
+footer {
+ margin-top: auto;
+    background: var(--blue);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+
+  .bubbles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  /* Glassy bubble style */
+  .bubbles span {
+    position: absolute;
+    bottom: -50px;
+    width: 20px;
+    height: 20px;
+    background: rgba(30, 136, 229, 0.2); /* semi-transparent blue */
+    border: 2px solid rgba(255, 255, 255, 0.5); /* subtle white outline */
+    border-radius: 50%;
+    backdrop-filter: blur(3px); /* gives that frosted glass effect */
+    box-shadow: 0 4px 15px rgba(30,136,229,0.3); /* soft glow */
+    opacity: 0.7;
+    animation: rise 12s linear infinite;
+  }
+  
+  /* Different positions & delays */
+  .bubbles span:nth-child(1) { left: 5%; animation-delay: 0s; width: 15px; height: 15px; }
+  .bubbles span:nth-child(2) { left: 20%; animation-delay: 2s; width: 25px; height: 25px; }
+  .bubbles span:nth-child(3) { left: 35%; animation-delay: 4s; width: 10px; height: 10px; }
+  .bubbles span:nth-child(4) { left: 50%; animation-delay: 6s; width: 30px; height: 30px; }
+  .bubbles span:nth-child(5) { left: 65%; animation-delay: 1s; width: 12px; height: 12px; }
+  .bubbles span:nth-child(6) { left: 75%; animation-delay: 3s; width: 18px; height: 18px; }
+  .bubbles span:nth-child(7) { left: 85%; animation-delay: 5s; width: 14px; height: 14px; }
+  .bubbles span:nth-child(8) { left: 95%; animation-delay: 7s; width: 22px; height: 22px; }
+  
+  /* Bubble rising animation */
+  @keyframes rise {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 0.7;
+    }
+    50% {
+      transform: translateY(-50vh) scale(1.2);
+      opacity: 0.9;
+    }
+    100% {
+      transform: translateY(-100vh) scale(1);
+      opacity: 0;
+    }
+  }
+
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
